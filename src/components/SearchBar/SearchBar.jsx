@@ -18,7 +18,7 @@ const SearchBar = ({ onSubmit }) => {
     // <SearchBox>
     //   <Formik
     //     initialValues={initialValues}
-    //     onSubmit={onSubmitForm}
+    //     onSubmit={onSubmit}
     //     validationSchema={userSchema}
     //   >
     //     <SearchForm>
