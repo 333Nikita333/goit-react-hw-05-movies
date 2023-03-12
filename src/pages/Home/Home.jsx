@@ -10,8 +10,6 @@ const Home = () => {
     getTrendingMovies().then(setTrendingMovies).catch(console.log);
   }, []);
 
-  console.log(trendingMovies);
-
   return (
     <main>
       <h1>Trending today</h1>

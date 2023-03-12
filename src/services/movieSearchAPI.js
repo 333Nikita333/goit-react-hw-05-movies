@@ -40,7 +40,7 @@ export async function getSearchMovie (searchQuery = '') {
     },
   };
   const url = `${BASE_URL}${typeRequest.search}`;
-  const response = axios.get(url, options);
+  const response = await axios.get(url, options);
   
   return response.data.results;
 };
@@ -62,7 +62,7 @@ export async function getMovieDetails (id, type = 'details') {
     },
   };
   const url = `${BASE_URL}${typeRequestById[type]}`;
-  const response = axios.get(url, options);
+  const response = await axios.get(url, options);
   
   return response.data;
 };
