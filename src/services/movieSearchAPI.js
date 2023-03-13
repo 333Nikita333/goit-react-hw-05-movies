@@ -19,9 +19,9 @@ export async function getTrendingMovies() {
     },
   };
   const url = `${BASE_URL}${typeRequest.trends}`;
-  const respons = await axios.get(url, options);
+  const response = await axios.get(url, options);
   
-  return respons.data.results;
+  return response.data.results;
 }
 
 export async function getSearchMovie (searchQuery = '') {

@@ -11,10 +11,11 @@ const Home = () => {
   }, []);
 
   return (
-    <main>
+    <>
       <h1>Trending today</h1>
       <MovieList movies={trendingMovies} />
-    </main>
+    </>
   );
 };
+
 export default Home;

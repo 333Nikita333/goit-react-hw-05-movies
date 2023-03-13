@@ -23,10 +23,10 @@ const Movies = () => {
   };
 
   return (
-    <main>
+    <>
       <SearchBar onSubmit={handleSubmit} />
       {foundMovies.length > 0 && <MovieList movies={foundMovies} />}
-    </main>
+    </>
   );
 };
 

@@ -3,16 +3,21 @@ import { NavLink, Outlet } from 'react-router-dom';
 
 const SharedLayout = () => {
   return (
-    <header>
-      <nav>
-        <NavLink to="/">Home</NavLink>
-        <NavLink to="/movies">Movies</NavLink>
-      </nav>
+    <>
+      <header>
+        <b>MovieTeka</b>
+        <nav>
+          <NavLink to="/">Home</NavLink>
+          <NavLink to="/movies">Movies</NavLink>
+        </nav>
+      </header>
 
       <Suspense fallback={<h2>Loading...</h2>}>
-        <Outlet />
+        <main>
+          <Outlet />
+        </main>
       </Suspense>
-    </header>
+    </>
   );
 };
 export default SharedLayout;
