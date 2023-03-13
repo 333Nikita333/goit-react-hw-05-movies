@@ -4,7 +4,7 @@ import BackLink from 'components/BackLink';
 import { Suspense } from 'react';
 
 // const { useState, useEffect } = require('react');
-const { useParams, Outlet, Link, useLocation } = require('react-router-dom');
+import { Link, useParams, useLocation, Outlet } from 'react-router-dom';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
@@ -20,22 +20,26 @@ const MovieDetails = () => {
   // const baseUrlImg = 'https://image.tmdb.org/t/p/original';
   console.log(movieId);
   return (
-    <>
+    <div>
       <BackLink to={backLinkHref}>Go back</BackLink>
       <p>Movie: {movieId}</p>
       <ul>
         <li>
-          <Link to="cast">Cast</Link>
+          <Link to="cast" state={{ from: backLinkHref }}>
+            Cast
+          </Link>
         </li>
         <li>
-          <Link to="reviews">Reviews</Link>
+          <Link to="reviews" state={{ from: backLinkHref }}>
+            Reviews
+          </Link>
         </li>
       </ul>
 
       <Suspense fallback={<div>Loading subpage...</div>}>
         <Outlet />
       </Suspense>
-    </>
+    </div>
     // <>
     //   <div>
     //     <BackLink to={backLinkHref}>Go back</BackLink>
