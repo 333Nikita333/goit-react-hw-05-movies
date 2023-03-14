@@ -22,14 +22,17 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
   }
+  
   ul {
     list-style: none;
   }
+  
   code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
       monospace;
   }
-  a{
+  
+  a {
     text-decoration: none;
   }
   img {

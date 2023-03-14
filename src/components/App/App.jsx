@@ -2,6 +2,8 @@ import { lazy } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import SharedLayout from 'components/SharedLayout';
 import NotFound from 'pages/NotFound';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const Home = lazy(() => import('pages/Home'));
 const Movies = lazy(() => import('pages/Movies'));
@@ -23,6 +25,7 @@ export const App = () => {
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
+      <ToastContainer autoClose={2000} theme="dark"/>
     </div>
   );
 };

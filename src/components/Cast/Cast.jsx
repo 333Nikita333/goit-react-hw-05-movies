@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieDetails } from 'services/movieSearchAPI';
+import { List } from './Cast.styled';
 
 const Cast = () => {
   const { movieId } = useParams();
@@ -14,7 +15,7 @@ const Cast = () => {
 
   return (
     <>
-      <ul>
+      <List>
         {actors.map(actor => (
           <li key={actor.cast_id}>
             {!actor.profile_path ? (
@@ -30,7 +31,7 @@ const Cast = () => {
             <p>{actor.character}</p>
           </li>
         ))}
-      </ul>
+      </List>
     </>
   );
 };

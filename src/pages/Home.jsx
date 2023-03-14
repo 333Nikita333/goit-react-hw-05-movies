@@ -1,7 +1,11 @@
 import MovieList from 'components/MovieList';
 import { useState, useEffect } from 'react';
+import styled from 'styled-components';
 import { getTrendingMovies } from 'services/movieSearchAPI';
 
+const Title = styled.h1`
+  margin-bottom: 20px;
+`;
 
 const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
@@ -12,7 +16,7 @@ const Home = () => {
 
   return (
     <>
-      <h1>Trending today</h1>
+      <Title>Trending today</Title>
       <MovieList movies={trendingMovies} />
     </>
   );
