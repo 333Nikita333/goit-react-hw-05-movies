@@ -1,0 +1,38 @@
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { getMovieDetails } from 'services/movieSearchAPI';
+
+const Cast = () => {
+  const { movieId } = useParams();
+  const [actors, setActors] = useState([]);
+
+  useEffect(() => {
+    getMovieDetails(movieId, 'credits')
+      .then(credits => setActors(credits.cast))
+      .catch(console.log);
+  }, [movieId]);
+
+  return (
+    <>
+      <ul>
+        {actors.map(actor => (
+          <li key={actor.cast_id}>
+            {!actor.profile_path ? (
+              <p>No photo</p>
+            ) : (
+              <img
+                src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}
+                alt={actor.name}
+                width="100"
+              />
+            )}
+            <b>{actor.name}</b>
+            <p>{actor.character}</p>
+          </li>
+        ))}
+      </ul>
+    </>
+  );
+};
+
+export default Cast;

@@ -1,66 +1,64 @@
+import { Suspense, useState, useEffect } from 'react';
+import { NavLink, useParams, useLocation, Outlet } from 'react-router-dom';
+import { getMovieDetails } from 'services/movieSearchAPI';
 import BackLink from 'components/BackLink';
-// import { getMovieDetails } from 'services/movieSearchAPI';
-
-import { Suspense } from 'react';
-
-// const { useState, useEffect } = require('react');
-import { Link, useParams, useLocation, Outlet } from 'react-router-dom';
 
 const MovieDetails = () => {
   const { movieId } = useParams();
-  // const [movieDetails, setMovieDetails] = useState({});
+  const [movieDetails, setMovieDetails] = useState(null);
   const location = useLocation();
   const backLinkHref = location.state?.from ?? '/';
 
-  // useEffect(() => {
-  //   getMovieDetails(id, 'details').then(setMovieDetails).catch(console.log);
-  // }, [id]);
+  useEffect(() => {
+    getMovieDetails(movieId, 'details')
+      .then(setMovieDetails)
+      .catch(console.log);
+  }, [movieId]);
 
-  // console.log(movieDetails);
-  // const baseUrlImg = 'https://image.tmdb.org/t/p/original';
-  console.log(movieId);
+  if (!movieDetails) return <h2>Loading...</h2>;
+
+  const { poster_path, title, release_date, vote_average, overview, genres } =
+    movieDetails;
+
   return (
-    <div>
+    <>
       <BackLink to={backLinkHref}>Go back</BackLink>
-      <p>Movie: {movieId}</p>
+      <div>
+        <img
+          src={`https://image.tmdb.org/t/p/w500${poster_path}`}
+          alt={title}
+          width="300px"
+          height="440px"
+        />
+        <h2>{`${title} (${release_date.slice(0, 4)})`}</h2>
+        <p>User Score: {Math.round(vote_average) * 10}%</p>
+        <b>Overview</b>
+        <p>{overview}</p>
+        <b>Genres</b>
+        {genres.length === 0 ? (
+          <p>No genres</p>
+        ) : (
+          <p>Genres: {genres.map(({ name }) => name).join(', ')}</p>
+        )}
+      </div>
+      <h2>Additional Information</h2>
       <ul>
         <li>
-          <Link to="cast" state={{ from: backLinkHref }}>
+          <NavLink to="cast" state={{ from: backLinkHref }}>
             Cast
-          </Link>
+          </NavLink>
         </li>
         <li>
-          <Link to="reviews" state={{ from: backLinkHref }}>
+          <NavLink to="reviews" state={{ from: backLinkHref }}>
             Reviews
-          </Link>
+          </NavLink>
         </li>
       </ul>
 
       <Suspense fallback={<div>Loading subpage...</div>}>
         <Outlet />
       </Suspense>
-    </div>
-    // <>
-    //   <div>
-    //     <BackLink to={backLinkHref}>Go back</BackLink>
-    //     <img
-    //       src={baseUrlImg + movieDetails.poster_path}
-    //       alt={movieDetails.original_title}
-    //     />
-    //     <h2>{`${movieDetails.original_title} (${movieDetails.release_date.slice(
-    //       0,
-    //       5
-    //     )})`}</h2>
-    //     <p>User Score: {Math.round(movieDetails.popularity)}%</p>
-    //     <b>Overview</b>
-    //     <p>{movieDetails.overview}</p>
-    //     <b>Genres</b>
-    //     <p>List of genres</p>
-    //   </div>
-    //   <div>
-    //     <h2>Additional Information</h2>
-    //   </div>
-    // </>
+    </>
   );
 };
 

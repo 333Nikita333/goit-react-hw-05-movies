@@ -20,11 +20,11 @@ export async function getTrendingMovies() {
   };
   const url = `${BASE_URL}${typeRequest.trends}`;
   const response = await axios.get(url, options);
-  
+
   return response.data.results;
 }
 
-export async function getSearchMovie (searchQuery = '') {
+export async function getSearchMovie(searchQuery = '') {
   const typeRequest = {
     search: 'search/movie',
   };
@@ -41,15 +41,15 @@ export async function getSearchMovie (searchQuery = '') {
   };
   const url = `${BASE_URL}${typeRequest.search}`;
   const response = await axios.get(url, options);
-  
-  return response.data.results;
-};
 
-export async function getMovieDetails (id, type = 'details') {
+  return response.data.results;
+}
+
+export async function getMovieDetails(movieId, type = 'details') {
   const typeRequestById = {
-    details: `movie/${id}`,
-    credits: `movie/${id}/credits`,
-    reviews: `movie/${id}/reviews`,
+    details: `movie/${movieId}`,
+    credits: `movie/${movieId}/credits`,
+    reviews: `movie/${movieId}/reviews`,
   };
   const options = {
     params: {
@@ -63,6 +63,6 @@ export async function getMovieDetails (id, type = 'details') {
   };
   const url = `${BASE_URL}${typeRequestById[type]}`;
   const response = await axios.get(url, options);
-  
+
   return response.data;
-};
+}
