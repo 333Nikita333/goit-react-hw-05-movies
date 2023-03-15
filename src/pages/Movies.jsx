@@ -44,10 +44,9 @@ const Movies = () => {
   return (
     <>
       <SearchBar onSubmit={handleSubmit} />
-      {searched &&
-        noResults &&
-        movieName !== '' &&
-        toast.error('Missing request')}
+      {searched && noResults && (
+        <div>No results found for your search query</div>
+      )}
       {searched && !noResults && <MovieList movies={movies} />}
     </>
   );
