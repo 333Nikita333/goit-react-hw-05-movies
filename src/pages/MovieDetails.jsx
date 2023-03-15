@@ -7,7 +7,7 @@ import { StyledLink } from 'components/MovieDetails/MovieDetails.styled';
 import {
   Container,
   MovieInfo,
-  MovieDescription
+  MovieDescription,
 } from 'components/MovieDetails/MovieDetails.styled';
 
 const MovieDetails = () => {
@@ -59,6 +59,11 @@ const MovieDetails = () => {
             <li>
               <StyledLink to="reviews" state={{ from: backLinkHref }}>
                 Reviews
+              </StyledLink>
+            </li>
+            <li>
+              <StyledLink to="trailer" state={{ from: backLinkHref }}>
+                Trailer
               </StyledLink>
             </li>
           </ul>

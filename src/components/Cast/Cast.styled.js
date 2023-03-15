@@ -6,7 +6,8 @@ export const List = styled.ul`
   gap: 15px;
   align-items: center;
   justify-content: center;
-
+  padding: 15px;
+  
   & li {
     display: flex;
     justify-content: center;
@@ -15,6 +16,8 @@ export const List = styled.ul`
     gap: 5px;
     width: 200px;
     padding: 5px;
+    border: solid 1px black;
+    border-radius: 35px;
 
     & img {
       margin-right: auto;

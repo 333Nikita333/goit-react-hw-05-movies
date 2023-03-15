@@ -50,6 +50,7 @@ export async function getMovieDetails(movieId, type = 'details') {
     details: `movie/${movieId}`,
     credits: `movie/${movieId}/credits`,
     reviews: `movie/${movieId}/reviews`,
+    videos: `movie/${movieId}/videos`,
   };
   const options = {
     params: {

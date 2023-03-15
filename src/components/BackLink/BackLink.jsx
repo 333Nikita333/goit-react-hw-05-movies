@@ -1,11 +1,13 @@
 import { HiArrowLeft } from 'react-icons/hi';
-import { StyledLink } from './BackLink.styled';
+import { StyledLink, Wrapper } from './BackLink.styled';
 
 const BackLink = ({ to, children }) => {
   return (
     <StyledLink to={to}>
-      <HiArrowLeft size="24" />
-      {children}
+      <Wrapper>
+        <HiArrowLeft size="24" />
+        {children}
+      </Wrapper>
     </StyledLink>
   );
 };

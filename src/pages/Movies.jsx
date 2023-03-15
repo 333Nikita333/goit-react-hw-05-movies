@@ -6,12 +6,25 @@ import SearchBar from 'components/SearchBar';
 import { toast } from 'react-toastify';
 
 const Movies = () => {
-  const [foundMovies, setFoundMovies] = useState([]);
+  const [movies, setMovies] = useState([]);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [searched, setSearched] = useState(false);
+  const [noResults, setNoResults] = useState(false);
   const movieName = searchParams.get('query') ?? '';
 
   useEffect(() => {
-    getSearchMovie(movieName).then(setFoundMovies).catch(console.log);
+    setNoResults(false);
+    if (movieName) {
+      setSearched(true);
+      getSearchMovie(movieName)
+        .then(movies => {
+          setMovies(movies);
+          if (movies.length === 0) {
+            setNoResults(true);
+          }
+        })
+        .catch(console.log);
+    }
   }, [movieName]);
 
   const handleSubmit = e => {
@@ -24,13 +37,18 @@ const Movies = () => {
     }
 
     setSearchParams(nextParams);
+
     e.target.name.value = '';
   };
 
   return (
     <>
       <SearchBar onSubmit={handleSubmit} />
-      {foundMovies.length > 0 && <MovieList movies={foundMovies} />}
+      {searched &&
+        noResults &&
+        movieName !== '' &&
+        toast.error('Missing request')}
+      {searched && !noResults && <MovieList movies={movies} />}
     </>
   );
 };

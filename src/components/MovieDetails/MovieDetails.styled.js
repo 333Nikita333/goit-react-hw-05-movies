@@ -15,6 +15,9 @@ export const MovieDescription = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
+  border: solid 1px black;
+  border-radius: 45px;
+  padding: 10px;
   
   & ul {
     display: flex;
@@ -37,5 +40,8 @@ export const StyledLink = styled(NavLink)`
 
   :hover {
     color: orangered;
+    transform: scale(1.03);
+    box-shadow: 0 1px 4px #0000004d, -23px 0 20px -23px #000c,
+      23px 0 20px -23px #000c, inset 0 0 40px #0000001a;
   }
 `;
