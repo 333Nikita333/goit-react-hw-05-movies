@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { getTrendingMovies } from 'services/movieSearchAPI';
 
 const Title = styled.h1`
+  text-align: center;
   margin-bottom: 20px;
 `;
 

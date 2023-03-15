@@ -19,7 +19,7 @@ const Cast = () => {
         {actors.map(actor => (
           <li key={actor.cast_id}>
             {!actor.profile_path ? (
-              <p>No photo</p>
+              <span>No photo</span>
             ) : (
               <img
                 src={`https://image.tmdb.org/t/p/w500${actor.profile_path}`}

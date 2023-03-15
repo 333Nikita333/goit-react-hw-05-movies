@@ -1,7 +1,9 @@
 import { Suspense, useState, useEffect } from 'react';
-import { NavLink, useParams, useLocation, Outlet } from 'react-router-dom';
+import { useParams, useLocation, Outlet } from 'react-router-dom';
 import { getMovieDetails } from 'services/movieSearchAPI';
 import BackLink from 'components/BackLink';
+import { StyledLink } from 'components/MovieDetails/MovieDetails.styled';
+
 import {
   Container,
   MovieInfo,
@@ -50,14 +52,14 @@ const MovieDetails = () => {
           <h2>Additional Information</h2>
           <ul>
             <li>
-              <NavLink to="cast" state={{ from: backLinkHref }}>
+              <StyledLink to="cast" state={{ from: backLinkHref }}>
                 Cast
-              </NavLink>
+              </StyledLink>
             </li>
             <li>
-              <NavLink to="reviews" state={{ from: backLinkHref }}>
+              <StyledLink to="reviews" state={{ from: backLinkHref }}>
                 Reviews
-              </NavLink>
+              </StyledLink>
             </li>
           </ul>
         </MovieDescription>

@@ -24,6 +24,7 @@ const Movies = () => {
     }
 
     setSearchParams(nextParams);
+    e.target.name.value = '';
   };
 
   return (
