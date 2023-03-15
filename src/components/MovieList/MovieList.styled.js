@@ -54,3 +54,10 @@ box-shadow: 0 1px 4px #0000004d,-23px 0 20px -23px #000c,23px 0 20px -23px #000c
     color: red;
   }
 `;
+
+export const Notification = styled.b`
+  display: block;
+  margin: 20px auto 0;
+  font-size: 20px;
+  width: 200px;
+`;

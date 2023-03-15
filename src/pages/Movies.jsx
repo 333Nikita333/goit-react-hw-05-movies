@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { getSearchMovie } from 'services/movieSearchAPI';
+import { Notification } from 'components/MovieList/MovieList.styled';
 import MovieList from 'components/MovieList';
 import SearchBar from 'components/SearchBar';
-import { toast } from 'react-toastify';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -45,7 +46,7 @@ const Movies = () => {
     <>
       <SearchBar onSubmit={handleSubmit} />
       {searched && noResults && (
-        <div>No results found for your search query</div>
+        <Notification>No results found for your search query</Notification>
       )}
       {searched && !noResults && <MovieList movies={movies} />}
     </>
