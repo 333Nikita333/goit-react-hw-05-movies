@@ -12,7 +12,8 @@ export const StyledLink = styled(Link)`
   border-radius: var(--button_radius);
   background: var(--button_outline_color);
   margin-bottom: 20px;
-
+  transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+  
   &:hover span {
     /* Pull the button upwards when hovered */
     transform: translateY(-0.33em);

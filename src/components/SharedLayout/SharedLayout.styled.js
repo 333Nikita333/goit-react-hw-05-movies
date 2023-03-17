@@ -1,5 +1,5 @@
-import styled from "styled-components"
-import { NavLink} from 'react-router-dom';
+import styled from 'styled-components';
+import { NavLink } from 'react-router-dom';
 
 export const Header = styled.header`
   display: flex;
@@ -21,6 +21,8 @@ export const Link = styled(NavLink)`
   text-decoration: none;
   color: black;
   font-weight: 500;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    background-color 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &.active {
     color: white;

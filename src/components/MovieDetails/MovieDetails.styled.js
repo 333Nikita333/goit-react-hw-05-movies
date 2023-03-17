@@ -18,7 +18,7 @@ export const MovieDescription = styled.div`
   border: solid 1px black;
   border-radius: 45px;
   padding: 10px;
-  
+
   & ul {
     display: flex;
     gap: 15px;
@@ -37,6 +37,9 @@ export const StyledLink = styled(NavLink)`
   border-radius: 15px;
   padding: 10px;
   margin-bottom: 10px;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    transform 250ms cubic-bezier(0.4, 0, 0.2, 1),
+    box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   :hover {
     color: orangered;
