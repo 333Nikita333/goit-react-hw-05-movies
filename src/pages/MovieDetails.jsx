@@ -1,4 +1,4 @@
-import { Suspense, useState, useEffect } from 'react';
+import { Suspense, useState, useEffect, useRef } from 'react';
 import { useParams, useLocation, Outlet } from 'react-router-dom';
 import { getMovieDetails } from 'services/movieSearchAPI';
 import BackLink from 'components/BackLink';
@@ -14,8 +14,8 @@ const MovieDetails = () => {
   const { movieId } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
   const location = useLocation();
-  const backLinkHref = location.state?.from ?? '/';
-
+  const backLinkHref = useRef(location.state?.from ?? '/movies')
+  
   useEffect(() => {
     getMovieDetails(movieId, 'details')
       .then(setMovieDetails)
@@ -29,7 +29,7 @@ const MovieDetails = () => {
 
   return (
     <Container>
-      <BackLink to={backLinkHref}>Go back</BackLink>
+      <BackLink to={backLinkHref.current}>Go back</BackLink>
       <MovieInfo>
         <img
           src={`https://image.tmdb.org/t/p/w500${poster_path}`}
