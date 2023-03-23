@@ -1,4 +1,4 @@
-import ReactPlayer from 'react-player/youtube';
+import ReactPlayer from 'react-player'
 import styled from 'styled-components';
 
 export const MovieTrailerBox = styled.div`
