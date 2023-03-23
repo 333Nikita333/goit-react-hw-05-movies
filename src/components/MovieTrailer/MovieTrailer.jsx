@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getMovieDetails } from 'services/movieSearchAPI';
-import { MovietrailerBox } from './MovieTrailer.styled';
+import { MovieTrailerBox, Trailer} from './MovieTrailer.styled';
 
 const MovieTrailer = () => {
   const { movieId } = useParams();
@@ -21,15 +21,9 @@ const MovieTrailer = () => {
   }, [movieId, trailer]);
 
   return (
-    <MovietrailerBox>
-      <iframe
-        title="trailer"
-        width="560"
-        height="315"
-        src={trailer}
-        allowFullScreen
-      ></iframe>
-    </MovietrailerBox>
+      <MovieTrailerBox>
+        <Trailer url={trailer} width="70%" height="70%" />
+      </MovieTrailerBox>
   );
 };
 
