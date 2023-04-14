@@ -5,6 +5,7 @@ import { getSearchMovie } from 'services/movieSearchAPI';
 import { Notification } from 'components/MovieList/MovieList.styled';
 import MovieList from 'components/MovieList';
 import SearchBar from 'components/SearchBar';
+import MyLoader from 'components/Skeleton/Skeleton';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -12,8 +13,10 @@ const Movies = () => {
   const [searched, setSearched] = useState(false);
   const [noResults, setNoResults] = useState(false);
   const movieName = searchParams.get('query') ?? '';
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
+    setIsLoading(true);
     setNoResults(false);
     if (movieName) {
       setSearched(true);
@@ -23,6 +26,7 @@ const Movies = () => {
           if (movies.length === 0) {
             setNoResults(true);
           }
+          setIsLoading(false);
         })
         .catch(console.log);
     }
@@ -48,7 +52,10 @@ const Movies = () => {
       {searched && noResults && (
         <Notification>No results found for your search query</Notification>
       )}
-      {searched && !noResults && <MovieList movies={movies} />}
+
+      {searched && !noResults && (
+        <>{isLoading ? <MyLoader /> : <MovieList movies={movies} />}</>
+      )}
     </>
   );
 };

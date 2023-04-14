@@ -2,6 +2,7 @@ import MovieList from 'components/MovieList';
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { getTrendingMovies } from 'services/movieSearchAPI';
+import MyLoader from 'components/Skeleton';
 
 const Title = styled.h1`
   text-align: center;
@@ -10,15 +11,23 @@ const Title = styled.h1`
 
 const Home = () => {
   const [trendingMovies, setTrendingMovies] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    getTrendingMovies().then(setTrendingMovies).catch(console.log);
+    setIsLoading(true);
+
+    getTrendingMovies()
+      .then(data => {
+        setTrendingMovies(data);
+        setIsLoading(false);
+      })
+      .catch(console.log);
   }, []);
 
   return (
     <>
       <Title>Trending today</Title>
-      <MovieList movies={trendingMovies} />
+      {isLoading ? <MyLoader /> : <MovieList movies={trendingMovies} />}
     </>
   );
 };
