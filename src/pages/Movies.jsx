@@ -5,7 +5,7 @@ import { getSearchMovie } from 'services/movieSearchAPI';
 import { Notification } from 'components/MovieList/MovieList.styled';
 import MovieList from 'components/MovieList';
 import SearchBar from 'components/SearchBar';
-import MyLoader from 'components/Skeleton/Skeleton';
+import Skeleton from 'components/Skeleton';
 
 const Movies = () => {
   const [movies, setMovies] = useState([]);
@@ -54,7 +54,7 @@ const Movies = () => {
       )}
 
       {searched && !noResults && (
-        <>{isLoading ? <MyLoader /> : <MovieList movies={movies} />}</>
+        <>{isLoading ? <Skeleton /> : <MovieList movies={movies} />}</>
       )}
     </>
   );

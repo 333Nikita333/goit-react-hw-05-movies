@@ -2,7 +2,7 @@ import MovieList from 'components/MovieList';
 import { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { getTrendingMovies } from 'services/movieSearchAPI';
-import MyLoader from 'components/Skeleton';
+import Skeleton from 'components/Skeleton';
 
 const Title = styled.h1`
   text-align: center;
@@ -27,7 +27,7 @@ const Home = () => {
   return (
     <>
       <Title>Trending today</Title>
-      {isLoading ? <MyLoader /> : <MovieList movies={trendingMovies} />}
+      {isLoading ? <Skeleton /> : <MovieList movies={trendingMovies} />}
     </>
   );
 };
