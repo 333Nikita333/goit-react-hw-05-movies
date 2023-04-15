@@ -16,9 +16,9 @@ const Movies = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    setIsLoading(true);
     setNoResults(false);
     if (movieName) {
+setIsLoading(true);
       setSearched(true);
       getSearchMovie(movieName)
         .then(movies => {
@@ -28,8 +28,7 @@ const Movies = () => {
           }
           setIsLoading(false);
         })
-        .catch(console.log)
-.finaly(setIsLoading(false));
+        .catch(console.log);
     }
   }, [movieName]);
 
