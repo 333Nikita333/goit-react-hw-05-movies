@@ -28,7 +28,8 @@ const Movies = () => {
           }
           setIsLoading(false);
         })
-        .catch(console.log);
+        .catch(console.log)
+.finaly(setIsLoading(false));
     }
   }, [movieName]);
 
